@@ -14,6 +14,7 @@ WINDOW_NAME = "Digits"
 
 
 def predict_local_image(image_path):
+
     loaded_model = tf.keras.models.load_model("mnist_model_optimized_v9.keras")
 
     # 读取图片
