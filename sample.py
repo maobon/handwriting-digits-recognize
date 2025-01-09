@@ -7,11 +7,10 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image
 
-# import utils
 
-os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
+os.environ["KMP_DUPLICATE_LIB_OK"] = "True"
 
-WINDOW_NAME = 'Digits'
+WINDOW_NAME = "Digits"
 
 
 def predict_local_image(image_path):
@@ -19,7 +18,7 @@ def predict_local_image(image_path):
 
     # 读取图片
     try:
-        img_data = imageio.imread(image_path, pilmode='L')  # 加载图像并转换为灰度图
+        img_data = imageio.imread(image_path, pilmode="L")  # 加载图像并转换为灰度图
     except FileNotFoundError:
         print("Error: Image not found or could not be read.")
         return
@@ -30,7 +29,7 @@ def predict_local_image(image_path):
     # 反转颜色（如果是白底黑字）
     img_data = 255 - img_data
     # 归一化处理
-    img_data = img_data.astype('float32') / 255.0
+    img_data = img_data.astype("float32") / 255.0
     # 增加批次维度
     img_data = np.expand_dims(img_data, axis=0)
     # 预测
@@ -60,7 +59,6 @@ def draw(event, x, y, flags, param):
             predict_local_image("image.png")
 
 
-
 def restart():
     """重新初始化窗口"""
     global img, original_img
@@ -73,7 +71,7 @@ def main():
     global img, original_img
 
     # 加载图像
-    img = cv.imread('bc_image.jpg')
+    img = cv.imread("bc_image.jpg")
     if img is None:
         print("Failed to load image")
         sys.exit()
@@ -92,12 +90,12 @@ def main():
             cv.destroyAllWindows()
             break
 
-        elif key == ord('r'):  # 按 'r' 键重置绘制
+        elif key == ord("r"):  # 按 'r' 键重置绘制
             print("Key 'r' detected! Resetting...")
             restart()  # 调用重置函数
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # 全局变量
     global img
     global original_img
