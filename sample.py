@@ -18,7 +18,7 @@ def predict_local_image(image_path):
     # mnist_model_optimized_v9.keras
     # 加载模型
     try:
-        loaded_model = tf.keras.models.load_model("mnist_model_mlp_v1.keras", compile=False)
+        loaded_model = tf.keras.models.load_model("mnist_model_optimized_v10.keras", compile=False)
     except Exception as e:
         print(f"Error loading model: {e}")
         return
