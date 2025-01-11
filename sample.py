@@ -18,7 +18,7 @@ def predict_local_image(image_path):
     # mnist_model_optimized_v9.keras
     # 加载模型
     try:
-        loaded_model = tf.keras.models.load_model("mnist_model_optimized_v9.keras")
+        loaded_model = tf.keras.models.load_model("mnist_model_mlp_v1.keras", compile=False)
     except Exception as e:
         print(f"Error loading model: {e}")
         return
@@ -28,6 +28,9 @@ def predict_local_image(image_path):
         img_data = imageio.imread(image_path, pilmode="L")  # 加载图像并转换为灰度图
     except FileNotFoundError:
         print("Error: Image not found or could not be read.")
+        return
+    except Exception as e:
+        print(f"Error reading image: {e}")
         return
 
     # 调整大小为28x28
@@ -108,9 +111,4 @@ def main():
             restart()  # 调用重置函数
 
 if __name__ == "__main__":
-    # 全局变量
-    global img
-    global original_img
-    global pre_pts
-
     main()
