@@ -47,10 +47,10 @@ def predict_local_image(image_path):
     try:
         # mnist_model_bp_v1.keras
         # mnist_model_cnn_v1.keras
-        # mnist_model_mlp_test.keras ???? 有问题
+        # mnist_model_mlp_v1.keras
         
         loaded_model = tf.keras.models.load_model(
-            "mnist_model_cnn_v1.keras", compile=False
+            "mnist_model_mlp_v1.keras", compile=False
         )
         
     except Exception as e:
