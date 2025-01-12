@@ -36,8 +36,6 @@ def preprocess_image(image_path):
     # 归一化处理
     img_data = img_data.astype("float32") / 255.0
     # 展平图像
-    # img_data = img_data.reshape(1, 28 * 28)  # 展平为一维向量
-    
     img_data = img_data.reshape(1, 28, 28, 1)  # 展平为一维向量
     return img_data
 
@@ -45,17 +43,16 @@ def preprocess_image(image_path):
 def predict_local_image(image_path):
     """预测本地图像中的数字"""
 
-    # mnist_model_bp_v1.keras
-    # mnist_model_optimized_v9.keras
     # 加载模型
     try:
-        # loaded_model = tf.keras.models.load_model("mnist_model_optimized_v1.keras", compile=False)
-        # loaded_model = tf.keras.models.load_model("mnist_model_bp_v5.keras", compile=False)
-        # loaded_model = tf.keras.models.load_model("mnist_model_mlp_v2.keras", compile=False)
-
+        # mnist_model_bp_v1.keras
+        # mnist_model_cnn_v1.keras
+        # mnist_model_mlp_test.keras ???? 有问题
+        
         loaded_model = tf.keras.models.load_model(
-            "mnist_model_bp_x4.keras", compile=False
+            "mnist_model_cnn_v1.keras", compile=False
         )
+        
     except Exception as e:
         print(f"Error loading model: {e}")
         return
