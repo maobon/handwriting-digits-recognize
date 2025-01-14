@@ -45,12 +45,8 @@ def predict_local_image(image_path):
 
     # 加载模型
     try:
-        # mnist_model_bp_v1.keras
-        # mnist_model_cnn_v1.keras
-        # mnist_model_mlp_v1.keras
-        
         loaded_model = tf.keras.models.load_model(
-            "mnist_model_mlp_v1.keras", compile=False
+            "mnist_model_mlp_ubuntu.keras", compile=False
         )
         
     except Exception as e:
@@ -85,10 +81,10 @@ def draw(event, x, y, flags, param):
     if event == cv.EVENT_LBUTTONUP:
         pre_pts = -1, -1
 
-    if event == cv.EVENT_RBUTTONUP:
-        print("okok...")
-        if cv.imwrite("image.png", img):
-            predict_local_image("image.png")
+    # if event == cv.EVENT_RBUTTONUP:
+    #    print("okok...")    
+    #    if cv.imwrite("image.png", img):
+    #        predict_local_image("image.png")
 
 
 def restart():
@@ -118,7 +114,13 @@ def main():
     while True:
         key = cv.waitKey(10) & 0xFF  # 监听键盘输入
 
-        if key == ord("q"):
+        if key == ord("s"):
+            print("okok...")    
+            if cv.imwrite("image.png", img):
+                predict_local_image("image.png")
+            break
+
+        elif key == ord("q"):
             cv.destroyAllWindows()
             break
 
